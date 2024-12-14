@@ -17,7 +17,7 @@ timm == 0.3.2
 
 1. You can see all our settings in ./config/
 
-2. Typically, 2 GPUs and >=24 GB per GPU Memory are available. But when training ViT-B-16 with a training resolution of 384, bigger GPU Memory is required.
+2. Typically, 2 GPUs and >=24 GB per GPU Memory are required to train the ResNet50. But when training ViT-B-16 with a training resolution of 384, bigger GPU Memory is required.
 
 ```python
 python main_cnn_ensemble_ddp.py (or python main_vit_ensemble.py if you want to train ViT)
