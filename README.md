@@ -27,7 +27,7 @@ or
 torchrun --nproc_per_node=n main_cnn_ensemble_ddp.py
 
 where n is the number of gpus in your server. And you should divide the defaulting batch_size in our configs with n.
-
+```
 
 
 
