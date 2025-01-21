@@ -1,0 +1,27 @@
+coslr: true
+endlr: 0.0
+dataset:
+  batch_size: 128
+  dataset: cifar10
+  dataroot: ./data/CIFAR10
+  img_size: 32
+  num_workers: 8
+  use_gpu: true
+networks:
+  def_file: ./models/ResNeXt_Ensemble_Cifar.py
+  params: {depth: 50, dropout: null, num_classes: 10, groups: 32, width_per_group: 4, normalized: false, scale: 30}
+
+model_dir: null
+optim_params: {lr: 0.05, momentum: 0.9, weight_decay: 0.0005}
+
+training_opt:
+  log_dir: ./logs/cifar10/ResNeXt_Ensemble
+  num_epochs: 200
+  warmup_epoch: 5
+  step1: 100
+  step2: 150
+  mixed_loss: true
+  alpha: 0.8
+  base_weight: 2
+  gamma: 1
+  mixer_type: mixup
