@@ -1,0 +1,29 @@
+coslr: true
+endlr: 0.0
+dataset:
+  batch_size: 64
+  dataset: tiny-imagenet-200
+  dataroot: ./data/
+  img_size: 32
+  num_workers: 8
+  use_gpu: true
+  autoaugment: false
+networks:
+  def_file: ./models/cifar/ResNet_Ensemble.py
+  params: {depth: 18, num_classes: 200}
+
+model_dir: null
+optim_params: {lr: 0.05, momentum: 0.9, weight_decay: 0.0005}
+
+training_opt:
+  log_dir: ./logs/classification/tiny-imagenet-200/ResNet_Ensemble_
+  num_epochs: 100
+  warmup_epoch: 5
+  num_accmutations: 1
+  milestones: [120, 160, 180]
+  mixed_loss: true
+  alpha: 4
+  base_weight: 0.5
+  gamma: 1
+  g: 0.1
+  mixer_type: mixup
