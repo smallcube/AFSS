@@ -1,0 +1,31 @@
+coslr: true
+endlr: 0.0
+dataset:
+  batch_size: 16
+  dataset: CUB_200_2011
+  dataroot: ./data/
+  img_size: 512
+  crop_size: 448
+  num_workers: 4
+  use_gpu: true
+networks:
+  def_file: ./models/ResNet_Ensemble.py
+  params: {depth: 18, num_classes: 200}
+
+model_dir: null
+optim_params: {lr: 0.005, momentum: 0.9, weight_decay: 0.0005}
+
+training_opt:
+  log_dir: ./logs/classification/CUB_200_2011/ResNet_Ensemble
+  num_epochs: 100
+  warmup_epoch: 5
+  num_accmutations: 1
+  milestones: [60, 80]
+  mixed_loss: false
+  base_weight: 0.5
+  gamma: 1
+  alpha: 1
+  g: 0.1
+  mixer_type: mixup
+  pretrained: true
+  
