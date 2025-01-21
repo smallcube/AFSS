@@ -1,0 +1,34 @@
+coslr: true
+endlr: 0.0
+dataset:
+  batch_size: 64
+  dataset: cifar100
+  dataroot: ./data/CIFAR100
+  img_size: 32
+  num_workers: 8
+  use_gpu: true
+networks:
+  teacher: "resnet32x4"
+  student: 
+    def_file: ./models/KD/cifar/resnet_ensemble.py
+    params: {model_name: "resnet8x4", num_classes: 100}
+
+
+model_dir: null
+optim_params: {lr: 0.05, momentum: 0.9, weight_decay: 0.0005}
+
+training_opt:
+  log_dir: ./logs/kd/cifar100/resnet32x4_resnet8x4
+  num_epochs: 240
+  warmup_epoch: 5
+  num_accmutations: 1
+  step1: 100
+  step2: 150
+  mixed_loss: true
+  alpha: 1
+  mixer_type: mixup
+  base_weight: 0.5
+  tempture: 4
+  gamma: 1.0
+  ce_weight: 1.0
+  kd_weight: 1.0
